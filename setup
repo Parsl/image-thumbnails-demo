@@ -1,0 +1,17 @@
+# 0. image files are in the current working directory and create .resampled/ 
+#    for the thumbnails
+  ls
+  mkdir .resampled
+
+# 1. make a list of files/photos you'd like to process
+
+ ls -1 *.JPG > foto_list.txt
+
+# 2. have the python script in your PATH
+[centos@sditest photos]$ which myconvert.py
+~/bin/myconvert.py
+
+# 3. run the swift workflow
+
+./convert.sh  
+
