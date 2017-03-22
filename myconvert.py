@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.5
 """ convert photo or image files using ImageMagick to thumbnail sizes
 """
 import sys
@@ -11,7 +11,7 @@ def process_image():
     outputdir = "./.resampled/"
 
     photo = sys.argv[1]
-    photo_info = subprocess.Popen(["identify", photo], stdout=subprocess.PIPE)
+    photo_info = subprocess.Popen(["/usr/bin/identify", photo], stdout=subprocess.PIPE)
     (myout, myerr) = photo_info.communicate()
     if myerr:
         print("error from the ImageMagick identify routine: %s" % (myerr.decode('ascii')))
@@ -27,7 +27,7 @@ def process_image():
 
     mygeom = str(xdim)+'x'+str(ydim)
     myoutputfile = outputdir+photo
-    myconvert = subprocess.run(["convert", "-geometry", mygeom, photo, myoutputfile])
+    myconvert = subprocess.run(["/usr/bin/convert", "-geometry", mygeom, photo, myoutputfile])
     print("%s" % (myconvert))
 
 # end def process_image
